@@ -1,4 +1,0 @@
-Timestamp: Thu, 09 Nov 2023 03:38:22 GMT | Method: GET | URL: /api/decks/decksByColdecksByGlobalColorIdentity | Status: 404 | Response Time: 9.819 ms
-Timestamp: Thu, 09 Nov 2023 03:38:27 GMT | Method: GET | URL: /api/decks/decksByGlobalColorIdentity | Status: 404 | Response Time: 4.879 ms
-Timestamp: Thu, 09 Nov 2023 03:41:37 GMT | Method: GET | URL: /api/decks/decksByGlobalColorIdentity | Status: 404 | Response Time: 4.995 ms
-Timestamp: Thu, 09 Nov 2023 03:41:47 GMT | Method: GET | URL: /api/decks/decksByGlobalColorIdentity | Status: 404 | Response Time: 4.943 ms
