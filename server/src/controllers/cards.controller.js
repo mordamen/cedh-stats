@@ -1,5 +1,6 @@
 const dbType = require('../middleware/database/cards.dbtype.middleware');
 const handleError = require('../middleware/errorHandler.middleware');
+const axios = require('axios');
 
 const mostPlayedCards = async (req, res) => {
 	try {
@@ -32,4 +33,8 @@ const findNumberOfOccurrences = async (req, res) => {
 	}
 };
 
-module.exports = { mostPlayedCards, uniqueCard, findNumberOfOccurrences };
+module.exports = {
+	mostPlayedCards,
+	uniqueCard,
+	findNumberOfOccurrences,
+};

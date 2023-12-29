@@ -1,4 +1,4 @@
-const Deck = require('../models/mongoDB/decklists/decklist.model');
+const Deck = require('../models/mongoDB/decklist.model');
 // Function to aggregate decks by color identity
 const decksByColorIdentity = () => {
 	const results = Deck.aggregate([

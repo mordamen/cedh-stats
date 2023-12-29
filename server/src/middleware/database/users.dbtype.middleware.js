@@ -1,5 +1,5 @@
 const config = require('config');
-const usersServiceMongo = require('../../models/mongoDB/users/users.commands');
+const usersServiceMongo = require('../../services/users.service');
 const dbOption = config.get('dbOption');
 
 const registerUser = (userData) => {

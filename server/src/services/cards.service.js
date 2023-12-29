@@ -1,4 +1,4 @@
-const Deck = require('../models/mongoDB/decklists/decklist.model');
+const Deck = require('../models/mongoDB/decklist.model');
 const { decksByGlobalColorIdentity } = require('./decks.service');
 
 const mostPlayedCards = async (cardType, colorIdentity) => {

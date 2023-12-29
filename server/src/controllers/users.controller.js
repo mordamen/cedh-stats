@@ -3,7 +3,7 @@ const dbType = require('../middleware/database/users.dbtype.middleware'); // Use
 const tokenService = require('../middleware/token.middleware'); // Token generation and validation
 const userValidationService = require('../middleware/validation_users.middleware'); // Validation of user data
 const hashService = require('../middleware/hash.middleware'); // Hashing and comparison of passwords
-const normalizeUser = require('../models/mongoDB/users/helpers/normalize_user'); // Data normalization for user input
+const normalizeUser = require('../models/mongoDB/helpers/normalize_user'); // Data normalization for user input
 const handleError = require('../middleware/errorHandler.middleware'); // Middleware for handling errors
 
 // Function to register a new user

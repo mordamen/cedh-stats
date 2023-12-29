@@ -1,0 +1,7 @@
+Timestamp: Thu, 07 Dec 2023 17:53:54 GMT | Method: GET | URL: /api/cards/test | Status: 500 | Response Time: 578.227 ms
+Timestamp: Thu, 07 Dec 2023 17:54:54 GMT | Method: GET | URL: /api/cards/test | Status: 500 | Response Time: 551.479 ms
+Timestamp: Thu, 07 Dec 2023 17:55:33 GMT | Method: GET | URL: /api/cards/test | Status: 500 | Response Time: 642.616 ms
+Timestamp: Thu, 07 Dec 2023 17:56:18 GMT | Method: POST | URL: /api/cards/test | Status: 404 | Response Time: 0.712 ms
+Timestamp: Thu, 07 Dec 2023 17:56:45 GMT | Method: POST | URL: /api/cards/test | Status: 404 | Response Time: 6.254 ms
+Timestamp: Thu, 07 Dec 2023 17:57:13 GMT | Method: POST | URL: /api/cards/test | Status: 404 | Response Time: 2.893 ms
+Timestamp: Thu, 07 Dec 2023 17:57:54 GMT | Method: POST | URL: /api/cards/test | Status: 404 | Response Time: 12.775 ms
