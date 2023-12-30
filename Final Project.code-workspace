@@ -7,5 +7,7 @@
 			"path": "./Website"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"conventionalCommits.scopes": ["client"]
+	}
 }

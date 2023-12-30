@@ -3,10 +3,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
 import { sidebarLinks } from '@/constants';
 
-function Bottombar() {
+const Footer = () => {
 	const pathname = usePathname();
 
 	return (
@@ -40,6 +39,6 @@ function Bottombar() {
 			</div>
 		</section>
 	);
-}
+};
 
-export default Bottombar;
+export default Footer;

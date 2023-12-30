@@ -1,10 +1,11 @@
 ## Pages:
 
-- Landing Page(?)
-- Profile
+- Landing Page
+- Profile Page
 - Dashboard
   - Card Data
   - Deck Data
+- About Page
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

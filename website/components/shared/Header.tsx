@@ -1,12 +1,9 @@
-// Import Clerk authentication components and themes
-import { OrganizationSwitcher, SignedIn, SignOutButton } from '@clerk/nextjs';
-import { dark } from '@clerk/themes';
 // Import Next.js components for image and navigation
 import Image from 'next/image';
 import Link from 'next/link';
 
 // Topbar functional component
-function Topbar() {
+const Header = () => {
 	// Return the top navigation bar
 	return (
 		<nav className='topbar'>
@@ -20,7 +17,7 @@ function Topbar() {
 				{/* Container for additional elements */}
 				<div className='block md:hidden'>
 					{/* Logout button (visible on small screens) */}
-					<SignedIn>
+					{/* <SignedIn>
 						<SignOutButton>
 							<div className='flex cursor-pointer'>
 								<Image
@@ -31,19 +28,11 @@ function Topbar() {
 								/>
 							</div>
 						</SignOutButton>
-					</SignedIn>
+					</SignedIn> */}
 				</div>
-				<OrganizationSwitcher
-					appearance={{
-						baseTheme: dark,
-						elements: {
-							organizationSwitcherTrigger: 'py-2 px-4', // Styling for organization switcher trigger
-						},
-					}}
-				/>
 			</div>
 		</nav>
 	);
-}
+};
 
-export default Topbar; // Export the Topbar component
+export default Header; // Export the Topbar component
