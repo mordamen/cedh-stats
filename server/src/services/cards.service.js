@@ -43,6 +43,7 @@ const mostPlayedCards = async (cardType, colorIdentity) => {
 		{
 			$group: {
 				_id: {
+					// id: '$cards.v.card.id',
 					card: '$cards.k',
 					color: '$cards.v.card.color_identity',
 					cardType: '$cards.v.card.type_line',
@@ -55,11 +56,12 @@ const mostPlayedCards = async (cardType, colorIdentity) => {
 		{
 			$project: {
 				_id: 0,
+				// id: '$_id.id',
 				cardName: '$_id.card',
 				colorIdentity: {
 					$cond: {
 						if: { $eq: ['$_id.color', []] },
-						then: 'Colorless', // Provide a default value for colorless cards
+						then: 'C', // Provide a default value for colorless cards
 						else: {
 							$reduce: {
 								input: '$_id.color',
@@ -70,35 +72,28 @@ const mostPlayedCards = async (cardType, colorIdentity) => {
 					},
 				},
 				cardType: '$_id.cardType',
-				inNumberOfDecks: '$count',
+				cardAmount: '$count',
 				// Calculating the percentage of decks
-				inPercentOfDecks: {
-					$round: [
-						{ $multiply: [{ $divide: ['$count', totalDecks[0].count] }, 100] },
-						2,
-					],
+				cardPercent: {
+					$round: [{ $multiply: [{ $divide: ['$count', totalDecks[0].count] }, 100] }, 2],
 				},
 			},
 		},
 		{
 			$sort: {
-				inNumberOfDecks: -1,
+				cardAmount: -1,
 			},
 		}
 	);
 
 	console.log(cardType, colorIdentity);
-	// console.log(totalDecks, colorcount);
 
 	// Run the aggregation pipeline
 	const results = await Deck.aggregate(pipeline);
 
 	results.forEach((item) => {
 		const cardcolor = colorcount.find(({ _id }) => _id == item[colorIdentity]);
-		if (cardcolor)
-			item.inXDecksofColor = parseInt(
-				((item[inNumberOfDecks] / cardcolor.count) * 100).toFixed(2)
-			);
+		if (cardcolor) item.inXDecksofColor = parseInt(((item[inNumberOfDecks] / cardcolor.count) * 100).toFixed(2));
 	});
 
 	return results;

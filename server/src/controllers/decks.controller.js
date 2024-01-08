@@ -1,9 +1,9 @@
-const dbType = require('../middleware/database/decks.dbtype.middleware');
 const handleError = require('../middleware/errorHandler.middleware');
+const decksService = require('../services/decks.service');
 
 const decksByColorIdentity = async (req, res) => {
 	try {
-		const decksData = await dbType.decksByColorIdentity();
+		const decksData = await decksService.decksByColorIdentity();
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);
@@ -12,7 +12,7 @@ const decksByColorIdentity = async (req, res) => {
 
 const decksByGlobalColorIdentity = async (req, res) => {
 	try {
-		const decksData = await dbType.decksByGlobalColorIdentity();
+		const decksData = await decksService.decksByGlobalColorIdentity();
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);
@@ -21,7 +21,7 @@ const decksByGlobalColorIdentity = async (req, res) => {
 
 const deckStats = async (req, res) => {
 	try {
-		const decksData = await dbType.deckStats();
+		const decksData = await decksService.deckStats();
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);
@@ -30,7 +30,7 @@ const deckStats = async (req, res) => {
 
 const averagesPerDeck = async (req, res) => {
 	try {
-		const decksData = await dbType.averagesPerDeck();
+		const decksData = await decksService.averagesPerDeck();
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);
@@ -39,7 +39,7 @@ const averagesPerDeck = async (req, res) => {
 
 const averagesByColorIdentity = async (req, res) => {
 	try {
-		const decksData = await dbType.averagesByColorIdentity();
+		const decksData = await decksService.averagesByColorIdentity();
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);
@@ -108,17 +108,12 @@ const edhtop16decks = async (req, res) => {
 		};
 
 		// Change the endpoint to 'edhtop16_decks'
-		const createDeckResponse = await axios.post(
-			`${base_url}edhtop16_decks`,
-			postData,
-			{ headers: moxfieldHeaders }
-		);
+		const createDeckResponse = await axios.post(`${base_url}edhtop16_decks`, postData, { headers: moxfieldHeaders });
 		const createdDeck = createDeckResponse.data.deck;
 
-		const deleteDeckResponse = await axios.delete(
-			`${base_url}edhtop16_decks/${createdDeck.id}`,
-			{ headers: moxfieldHeaders }
-		);
+		const deleteDeckResponse = await axios.delete(`${base_url}edhtop16_decks/${createdDeck.id}`, {
+			headers: moxfieldHeaders,
+		});
 
 		const deck = new Deck(createdDeck);
 		res.json(deck);

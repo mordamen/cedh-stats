@@ -20,9 +20,9 @@ const getLogFileName = () => {
 // Function to create a log stream with appropriate settings
 const createLogStream = () => {
 	return createStream(getLogFileName(), {
-		path: path.join(__dirname, '../../logs'), // Set the log file path
-		encoding: 'utf8', // Use UTF-8 encoding for text
-		flags: 'a', // Open the file in append mode (add to existing content)
+		path: path.join(__dirname, '../../logs'),
+		encoding: 'utf8',
+		options: { initialRotation: 'append' }, // Open in append mode
 	});
 };
 
@@ -37,9 +37,7 @@ const logger = morgan((tokens, req, res) => {
 	const responseTime = tokens['response-time'](req, res); // Get response time in milliseconds
 
 	// Retrieve error message from res.locals if available
-	const errorMessage = res.locals.errorMessage
-		? `\nError: ${res.locals.errorMessage}`
-		: '';
+	const errorMessage = res.locals.errorMessage ? `\nError: ${res.locals.errorMessage}` : '';
 
 	// Construct the log message with relevant details
 	const logMessage = `Timestamp: ${timestamp} | Method: ${method} | URL: ${url} | Status: ${status} | Response Time: ${responseTime} ms`;

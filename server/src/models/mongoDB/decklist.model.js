@@ -4,6 +4,10 @@ const cardSchema = require('./card.model');
 // Define the main deck schema
 const deckSchema = new mongoose.Schema(
 	{
+		Pilot: {
+			type: String,
+			required: false,
+		},
 		Title: {
 			type: String,
 			required: true,

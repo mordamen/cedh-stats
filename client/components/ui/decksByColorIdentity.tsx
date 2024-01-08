@@ -7,7 +7,7 @@ interface DeckData {
 	count: number;
 }
 
-const Home = () => {
+const DeckByColorIdentity = () => {
 	const [data, setData] = useState<DeckData[] | null>(null);
 
 	useEffect(() => {
@@ -49,4 +49,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default DeckByColorIdentity;

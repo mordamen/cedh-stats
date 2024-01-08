@@ -1,5 +1,5 @@
 // Import required services and modules for user management
-const dbType = require('../middleware/database/users.dbtype.middleware'); // User-related data access and operations
+const usersService = require('../services/users.service');
 const tokenService = require('../middleware/token.middleware'); // Token generation and validation
 const userValidationService = require('../middleware/validation_users.middleware'); // Validation of user data
 const hashService = require('../middleware/hash.middleware'); // Hashing and comparison of passwords
@@ -14,10 +14,8 @@ const registerUser = async (req, res) => {
 
 		// Validate and register the user
 		await userValidationService.registerUserValidation(normalizedUser);
-		normalizedUser.password = await hashService.generateHash(
-			normalizedUser.password
-		);
-		const dataFromDB = await dbType.registerUser(normalizedUser);
+		normalizedUser.password = await hashService.generateHash(normalizedUser.password);
+		const dataFromDB = await usersService.registerUser(normalizedUser);
 
 		// Respond with the registered user's data
 		res.json(dataFromDB);
@@ -33,13 +31,11 @@ const loginUser = async (req, res) => {
 		// Validate the user's login credentials
 		await userValidationService.loginUserValidation(req.body);
 		let { email, password } = req.body;
-		let dataFromDB = await dbType.getUserByEmail(email);
+		let dataFromDB = await usersService.getUserByEmail(email);
 
 		// Check if the login credentials are valid
-		if (
-			!dataFromDB ||
-			!(await hashService.cmpHash(password, dataFromDB.password))
-		) {
+		if (!dataFromDB || !(await hashService.cmpHash(password, dataFromDB.password))) {
+			usersService;
 			throw new Error('Invalid email or password');
 		} else {
 			// Generate a token for the authenticated user and send a success response
@@ -60,7 +56,7 @@ const loginUser = async (req, res) => {
 const getAllUsers = async (req, res) => {
 	try {
 		// Retrieve and respond with all users' data
-		const dataFromDB = await dbType.getAllUsers();
+		const dataFromDB = await usersService.getAllUsers();
 		res.json(dataFromDB);
 	} catch (error) {
 		// Handle errors, if any, by sending an error response
@@ -73,7 +69,7 @@ const getUser = async (req, res) => {
 	try {
 		// Validate the user ID and retrieve the user's data
 		await userValidationService.userIdValidation(req.params.id);
-		const dataFromDB = await dbType.getUserById(req.params.id);
+		const dataFromDB = await usersService.getUserById(req.params.id);
 
 		// Respond with the user's data or an error message if the user is not found
 		if (dataFromDB) {
@@ -96,7 +92,7 @@ const editUser = async (req, res) => {
 		await userValidationService.updateUserValidation(normalUser);
 
 		// Update the user's data and respond with the modified data
-		const dataFromDB = await dbType.updateUser(req.params.id, normalUser);
+		const dataFromDB = await usersService.updateUser(req.params.id, normalUser);
 
 		// Respond with the user's updated data or an error message if the user is not found
 		if (dataFromDB) {
@@ -117,7 +113,7 @@ const changeAccountType = async (req, res) => {
 
 		// Validate the user ID and update the user's account status
 		await userValidationService.userIdValidation(id);
-		await dbType.updateBizUser(id);
+		await usersService.updateBizUser(id);
 
 		// Respond with a success message
 		res.json({ msg: 'done' });
@@ -132,7 +128,7 @@ const deleteUser = async (req, res) => {
 	try {
 		// Validate the user ID and delete the user
 		await userValidationService.userIdValidation(req.params.id);
-		const dataFromDb = await dbType.deleteUser(req.params.id);
+		const dataFromDb = await usersService.deleteUser(req.params.id);
 
 		// Respond with a success message or an error message if the user is not found
 		res.json({
