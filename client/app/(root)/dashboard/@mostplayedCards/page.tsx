@@ -1,4 +1,4 @@
-import { DataTable } from '@/components/ui/data-table';
+import { DataTable } from '@/src/components/ui/data-table';
 import { MostPlayedCards, CardData } from './mostPlayedCards.data';
 
 async function getData(): Promise<CardData[]> {

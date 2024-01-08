@@ -1,11 +1,10 @@
-import DeckByColorIdentity from '@/components/ui/decksByColorIdentity';
-import MostPlayedCards from '@/components/ui/mostPlayedCards_old';
+import MostPlayedCardsOld from '@/src/components/ui/mostPlayedCards_old';
 
 const page = () => {
 	return (
 		<>
 			{/* <DeckByColorIdentity /> */}
-			<MostPlayedCards />
+			<MostPlayedCardsOld />
 		</>
 	);
 };
