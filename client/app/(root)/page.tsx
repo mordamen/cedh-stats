@@ -1,10 +1,7 @@
-import MostPlayedCardsOld from '@/src/components/ui/mostPlayedCards_old';
-
 const page = () => {
 	return (
 		<>
-			{/* <DeckByColorIdentity /> */}
-			<MostPlayedCardsOld />
+			<h1>Hello World!</h1>
 		</>
 	);
 };

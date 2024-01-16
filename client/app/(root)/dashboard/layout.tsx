@@ -1,10 +1,19 @@
 import { ReactNode } from 'react';
 
-export default function RootLayout({ children, mostplayedCards }: { children: ReactNode; mostplayedCards: ReactNode }) {
+export default function RootLayout({
+	children,
+	mostPlayedCards,
+	deckStats,
+}: {
+	children: ReactNode;
+	mostPlayedCards: ReactNode;
+	deckStats: ReactNode;
+}) {
 	return (
 		<>
 			{children}
-			{mostplayedCards}
+			{mostPlayedCards}
+			{deckStats}
 		</>
 	);
 }

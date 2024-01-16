@@ -1,72 +1,98 @@
-import * as React from 'react';
+// import { FC } from 'react';
+import Image from 'next/image';
+import { colorIconMap } from '@/src/constants';
+import { mostPlayedCardsData } from '@/src/constants/definitions';
 
-import { cn } from '@/src/lib/utils';
+// // Declare generic types at the top level
+// type T = any; // Substitute with the actual type of your data
+// type U = keyof T;
+// interface Props<T, U extends keyof T> {
+// 	data: T[];
+// 	headers: U[];
+// }
 
-const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
-	({ className, ...props }, ref) => (
-		<div className='relative w-full overflow-auto p-3'>
-			<table ref={ref} className={cn('w-full caption-bottom text-sm', className)} {...props} />
-		</div>
-	)
-);
-Table.displayName = 'Table';
+// const DataTable: FC<Props<T, U>> = ({ data, headers }) => {
+// 	return (
+// 		<table className='flex flex-col text-white'>
+// 			<thead className=''>
+// 				<tr className='flex justify-evenly text-small-regular'>
+// 					{headers.map((header) => (
+// 						<th key={String(header)} className='w-1/12'>
+// 							{String(header)}
+// 						</th>
+// 					))}
+// 				</tr>
+// 			</thead>
+// 			<tbody className=''>
+// 				{data.map((item, index) => (
+// 					<tr key={index} className='flex justify-evenly shadow-modal rounded-lg my-2 py-2'>
+// 						{headers.map((header) => (
+// 							<td key={String(header)} className='w-1/12'>
+// 								{header === 'colorIdentity' && colorIconMap
+// 									? item[header]
+// 											.split('')
+// 											.map((color: string, index: number) => (
+// 												<Image
+// 													key={`mostplayed-${color}-${index}`}
+// 													className='mx-1'
+// 													src={colorIconMap[color]}
+// 													width={24}
+// 													height={24}
+// 													alt={`${color} Mana Icon`}
+// 												/>
+// 											))
+// 									: item[header]}
+// 							</td>
+// 						))}
+// 					</tr>
+// 				))}
+// 			</tbody>
+// 		</table>
+// 	);
+// };
 
-const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-	({ className, ...props }, ref) => <thead ref={ref} className={cn('[&_tr]:border-0', className)} {...props} />
-);
-TableHeader.displayName = 'TableHeader';
+// export default DataTable;
 
-const TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-	({ className, ...props }, ref) => (
-		<tbody ref={ref} className={cn('[&_tr:last-child]:border-0', className)} {...props} />
-	)
-);
-TableBody.displayName = 'TableBody';
+const Table = ({ data }: { data: mostPlayedCardsData[] }) => {
+	return (
+		<table className='flex flex-col text-white'>
+			<thead className=''>
+				<tr className='flex justify-evenly text-small-regular'>
+					<th className='w-1/12 '>#</th>
+					<th className='w-4/12 text-start pl-4'>Card Name</th>
+					<th className='w-1/12'>Color Identity</th>
+					<th className='w-3/12 text-start pl-4'>Card Type</th>
+					<th className='w-1/12'># of Decks</th>
+					<th className='w-1/12'>% of Decks</th>
+					<th className='w-1/12'>% of Decks in Color</th>
+				</tr>
+			</thead>
+			<tbody className=''>
+				{data.map((card, index) => (
+					<tr key={index} className='flex justify-evenly shadow-modal rounded-lg my-2 py-2'>
+						<td className='w-1/12 text-center'>{index + 1}</td>
+						<td className='w-4/12 pl-4'>{card.cardName}</td>
+						<td className='w-1/12 flex flex-wrap'>
+							{card.colorIdentity.split('').map((color, index) => (
+								<Image
+									key={`mostplayed-${color}-${index}`}
+									className='mx-1'
+									src={colorIconMap[color]}
+									width={24}
+									height={24}
+									alt={`${color} Mana Icon`}
+								/>
+							))}
+						</td>
+						<td className='w-3/12 pl-4'>{card.cardType}</td>
+						<td className='w-1/12 text-center'>{card.cardAmount}</td>
+						<td className='w-1/12 text-center'>{`${card.cardPercent} %`}</td>
+						<td className='w-1/12 text-center'>{`${card.inXDecksofColor} %`}</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+	);
+};
 
-const TableFooter = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-	({ className, ...props }, ref) => (
-		<tfoot ref={ref} className={cn('border-t bg-muted/50 font-medium [&>tr]:last:border-b-0', className)} {...props} />
-	)
-);
-TableFooter.displayName = 'TableFooter';
-
-const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
-	({ className, ...props }, ref) => (
-		<tr
-			ref={ref}
-			className={cn('transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted', className)}
-			{...props}
-		/>
-	)
-);
-TableRow.displayName = 'TableRow';
-
-const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(
-	({ className, ...props }, ref) => (
-		<th
-			ref={ref}
-			className={cn(
-				'h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0',
-				className
-			)}
-			{...props}
-		/>
-	)
-);
-TableHead.displayName = 'TableHead';
-
-const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(
-	({ className, ...props }, ref) => (
-		<td ref={ref} className={cn('my-3 p-3 align-middle [&:has([role=checkbox])]:pr-0', className)} {...props} />
-	)
-);
-TableCell.displayName = 'TableCell';
-
-const TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(
-	({ className, ...props }, ref) => (
-		<caption ref={ref} className={cn('mt-4 text-sm text-muted-foreground', className)} {...props} />
-	)
-);
-TableCaption.displayName = 'TableCaption';
-
-export { Table, TableHeader, TableBody, TableFooter, TableHead, TableRow, TableCell, TableCaption };
+export default Table;

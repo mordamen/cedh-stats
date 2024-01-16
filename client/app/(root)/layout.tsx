@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { inter } from '@/src/lib/utils/fonts';
 import '../globals.css';
 import Header from '@/src/components/shared/Header';
-import LeftSidebar from '@/src/components/shared/LeftSideBar';
 
-const inter = Inter({ subsets: ['latin'] });
+import SideNav from '@/src/components/shared/SideNav';
+import Footer from '@/src/components/shared/Footer';
 
 export const metadata: Metadata = {
 	title: 'cEDH-Stats',
@@ -14,15 +14,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
 	return (
 		<html lang='en'>
-			<body className={inter.className}>
-				<Header />
+			<body className={`${inter.className} antialiased`}>
 				<main>
-					{/* <LeftSidebar /> */}
-					<section className='main-container bg-gradient-to-r bg-cedh-blue to-indigo-700'>
-						<div className='w-full'>{children}</div>
-					</section>
+					<div className='flex h-screen flex-col md:flex-row md:overflow-hidden'>
+						<SideNav />
+
+						<section className='flex-grow p-6 md:overflow-y-auto md:p-12 bg-gradient-to-r bg-cedh-blue to-indigo-700'>
+							{children}
+						</section>
+					</div>
 				</main>
-				{/* <Footer /> */}
+				<Footer />
 			</body>
 		</html>
 	);

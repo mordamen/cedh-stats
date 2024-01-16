@@ -1,5 +1,6 @@
-import Deck from '@/lib/models/decklist.model';
-import { connectToDB } from '@/lib/utils';
+import { connectToDB } from '@/src/lib/middleware/connectToDB';
+import Deck from '@/src/lib/models/decklist.model';
+
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // Define the structure of each deck item
@@ -8,10 +9,7 @@ interface DeckData {
 	count: number;
 }
 
-export const decksByColorIdentityHandler = async (
-	req: NextApiRequest,
-	res: NextApiResponse
-) => {
+export const decksByColorIdentityHandler = async (req: NextApiRequest, res: NextApiResponse) => {
 	connectToDB();
 	try {
 		const results = await Deck.aggregate([
@@ -90,10 +88,7 @@ export const decksByColorIdentityHandler = async (
 };
 
 // Function to aggregate decks count by global color identity
-export const decksByGlobalColorIdentityHandler = async (
-	req: NextApiRequest,
-	res: NextApiResponse
-): Promise<void> => {
+export const decksByGlobalColorIdentityHandler = async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
 	connectToDB();
 	try {
 		// Call the function to get the result
@@ -148,10 +143,7 @@ export const decksByGlobalColorIdentityHandler = async (
 	}
 };
 
-export async function deckStatsHandler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export async function deckStatsHandler(req: NextApiRequest, res: NextApiResponse) {
 	try {
 		const uniqueCards = await Deck.aggregate([
 			// ... (your existing aggregation pipeline for uniqueCards)
@@ -162,15 +154,11 @@ export async function deckStatsHandler(
 		]);
 
 		const mergedResults = deckStats.map((deckStats) => {
-			const matchingUniqueCards = uniqueCards.find((uniqueCards) =>
-				uniqueCards._id.includes(deckStats.deckName)
-			);
+			const matchingUniqueCards = uniqueCards.find((uniqueCards) => uniqueCards._id.includes(deckStats.deckName));
 
 			return {
 				...deckStats,
-				uniqueCardCount: matchingUniqueCards
-					? matchingUniqueCards.uniqueCardsCount
-					: 0,
+				uniqueCardCount: matchingUniqueCards ? matchingUniqueCards.uniqueCardsCount : 0,
 			};
 		});
 
@@ -181,10 +169,7 @@ export async function deckStatsHandler(
 	}
 }
 
-export async function averagesPerDeckHandler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export async function averagesPerDeckHandler(req: NextApiRequest, res: NextApiResponse) {
 	try {
 		const results = await Deck.aggregate([
 			// ... (your existing aggregation pipeline for averagesPerDeck)
@@ -197,10 +182,7 @@ export async function averagesPerDeckHandler(
 	}
 }
 
-export async function averagesByColorIdentityHandler(
-	req: NextApiRequest,
-	res: NextApiResponse
-) {
+export async function averagesByColorIdentityHandler(req: NextApiRequest, res: NextApiResponse) {
 	try {
 		const results = await Deck.aggregate([
 			// ... (your existing aggregation pipeline for averagesByColorIdentity)

@@ -2,7 +2,20 @@ const cardsService = require('../services/cards.service');
 const handleError = require('../middleware/errorHandler.middleware');
 const normalizeColorIdentity = require('../middleware/normalizeColorIdentity.middleware');
 
+// Server-side API route handler
 const mostPlayedCards = async (req, res) => {
+	try {
+		const { page, query } = req.query;
+
+		const decksData = await cardsService.mostPlayedCards(page, query);
+
+		res.json(decksData);
+	} catch (error) {
+		handleError(res, error.message, 400);
+	}
+};
+
+const mostPlayedCards2 = async (req, res) => {
 	try {
 		// Extract data from query parameters
 		let { cardType, colorIdentity } = req.query;

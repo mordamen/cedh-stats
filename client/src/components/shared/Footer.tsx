@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { sidebarLinks } from '@/constants';
+import { sidebarLinks } from '@/src/constants';
 
 const Footer = () => {
 	const pathname = usePathname();
@@ -12,27 +12,13 @@ const Footer = () => {
 		<section className='bottombar'>
 			<div className='bottombar_container'>
 				{sidebarLinks.map((link) => {
-					const isActive =
-						(pathname.includes(link.route) && link.route.length > 1) ||
-						pathname === link.route;
+					const isActive = (pathname.includes(link.route) && link.route.length > 1) || pathname === link.route;
 
 					return (
-						<Link
-							href={link.route}
-							key={link.label}
-							className={`bottombar_link ${isActive && 'bg-primary-500'}`}
-						>
-							<Image
-								src={link.imgURL}
-								alt={link.label}
-								width={16}
-								height={16}
-								className='object-contain'
-							/>
+						<Link href={link.route} key={link.label} className={`bottombar_link ${isActive && 'bg-primary-500'}`}>
+							<Image src={link.imgURL} alt={link.label} width={16} height={16} className='object-contain' />
 
-							<p className='text-subtle-medium text-light-1 max-sm:hidden'>
-								{link.label.split(/\s+/)[0]}
-							</p>
+							<p className='text-subtle-medium text-light-1 max-sm:hidden'>{link.label.split(/\s+/)[0]}</p>
 						</Link>
 					);
 				})}
