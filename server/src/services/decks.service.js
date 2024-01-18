@@ -1,4 +1,6 @@
 const Deck = require('../models/mongoDB/decklist.model');
+
+const ITEMS_PER_PAGE = 10;
 // Function to aggregate decks by color identity
 const decksByColorIdentity = () => {
 	const results = Deck.aggregate([
@@ -94,9 +96,7 @@ const decksByGlobalColorIdentity = async () => {
 
 		const summaryArray = [];
 
-		Object.keys(summary).forEach((key) =>
-			summaryArray.push({ _id: key, count: summary[key] })
-		);
+		Object.keys(summary).forEach((key) => summaryArray.push({ _id: key, count: summary[key] }));
 
 		return summaryArray;
 	};
@@ -107,7 +107,15 @@ const decksByGlobalColorIdentity = async () => {
 };
 
 // Function to aggregate deck stats
-const deckStats = async () => {
+const deckStats = async (page, query) => {
+	const offset = (page - 1) * ITEMS_PER_PAGE;
+
+	const totalDecks = await Deck.aggregate([
+		{
+			$count: 'count',
+		},
+	]);
+
 	const uniqueCards = await Deck.aggregate([
 		{
 			$project: {
@@ -499,23 +507,52 @@ const deckStats = async () => {
 				},
 			},
 		},
+		{
+			$match: {
+				$or: [
+					{ deckName: { $regex: new RegExp(query, 'i') } },
+					{ colorIdentity: { $regex: new RegExp(query, 'i') } },
+					{ artifactCount: { $regex: new RegExp(query, 'i') } },
+					{ landCount: { $regex: new RegExp(query, 'i') } },
+					{ sorceryCount: { $regex: new RegExp(query, 'i') } },
+					{ instantCount: { $regex: new RegExp(query, 'i') } },
+					{ planeswalkerCount: { $regex: new RegExp(query, 'i') } },
+					{ creatureCount: { $regex: new RegExp(query, 'i') } },
+					{ battleCount: { $regex: new RegExp(query, 'i') } },
+					{ averageManaValue: { $regex: new RegExp(query, 'i') } },
+				],
+			},
+		},
+		{
+			$sort: {
+				deckName: -1, // Sorting by colorWeight in ascending order
+			},
+		},
+		{ $skip: offset }, // Skip initial results
+		{ $limit: ITEMS_PER_PAGE }, // Limit results per page
 	]);
 
 	// Merge the results based on the common field (Title)
 	const mergedResults = deckStats.map((deckStats) => {
-		const matchingUniqueCards = uniqueCards.find((uniqueCards) =>
-			uniqueCards._id.includes(deckStats.deckName)
-		);
+		const matchingUniqueCards = uniqueCards.find((uniqueCards) => uniqueCards._id.includes(deckStats.deckName));
 
 		return {
 			...deckStats,
-			uniqueCardCount: matchingUniqueCards
-				? matchingUniqueCards.uniqueCardsCount
-				: 0,
+			uniqueCardCount: matchingUniqueCards ? matchingUniqueCards.uniqueCardsCount : 0,
 		};
 	});
 
-	return mergedResults;
+	// Calculate totalPages
+	const totalPages = Math.ceil(totalDecks[0].count / ITEMS_PER_PAGE);
+
+	// Create a new object with both results and totalPages
+	const response = {
+		data: mergedResults,
+		totalPages: totalPages,
+	};
+
+	// Return the new object (or assign it to a variable for further use)
+	return response;
 };
 
 // Function to aggregate averages of card types

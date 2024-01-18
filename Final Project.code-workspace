@@ -8,6 +8,6 @@
 		}
 	],
 	"settings": {
-		"conventionalCommits.scopes": ["client"]
+		"conventionalCommits.scopes": ["client", "server"]
 	}
 }

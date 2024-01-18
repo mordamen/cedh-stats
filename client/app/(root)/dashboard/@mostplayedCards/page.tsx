@@ -1,11 +1,9 @@
 import Pagination from '@/src/components/shared/Pagination';
 import Search from '@/src/components/shared/Search';
 import { InvoicesTableSkeleton } from '@/src/components/ui/skeletons';
-import Table from '@/src/components/ui/table';
-import { colorIconMap, mostPlayedCardsHeaders } from '@/src/constants';
+import { Table_MostPlayedDecks } from '@/src/components/ui/table';
 import { mostPlayedCardsData } from '@/src/constants/definitions';
 import { unstable_noStore as noStore } from 'next/cache';
-import Image from 'next/image';
 import { Suspense } from 'react';
 
 async function getData({
@@ -51,7 +49,7 @@ const MostPlayedCards = async ({
 				<Search placeholder='Search cards...' />
 			</div>
 			<Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-				<Table data={data} />
+				<Table_MostPlayedDecks data={data} />
 			</Suspense>
 			<div className='mt-5 flex w-full justify-center'>
 				<Pagination totalPages={totalPages} />

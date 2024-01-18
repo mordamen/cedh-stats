@@ -22,7 +22,6 @@ const createLogStream = () => {
 	return createStream(getLogFileName(), {
 		path: path.join(__dirname, '../../logs'),
 		encoding: 'utf8',
-		options: { initialRotation: 'append' }, // Open in append mode
 	});
 };
 
@@ -39,8 +38,9 @@ const logger = morgan((tokens, req, res) => {
 	// Retrieve error message from res.locals if available
 	const errorMessage = res.locals.errorMessage ? `\nError: ${res.locals.errorMessage}` : '';
 
+	console.log('🚀 ~ logger ~ errorMessage:', errorMessage);
 	// Construct the log message with relevant details
-	const logMessage = `Timestamp: ${timestamp} | Method: ${method} | URL: ${url} | Status: ${status} | Response Time: ${responseTime} ms`;
+	const logMessage = `Timestamp: ${timestamp} | Method: ${method} | URL: ${url} | Status: ${status} | Response Time: ${responseTime} ms ${errorMessage}`;
 
 	// Conditionally log to file for error responses (status code >= 400)
 	if (res.statusCode >= 400) {

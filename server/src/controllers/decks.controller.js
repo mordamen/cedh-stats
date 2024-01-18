@@ -1,5 +1,6 @@
 const handleError = require('../middleware/errorHandler.middleware');
 const decksService = require('../services/decks.service');
+const axios = require('axios');
 
 const decksByColorIdentity = async (req, res) => {
 	try {
@@ -21,7 +22,9 @@ const decksByGlobalColorIdentity = async (req, res) => {
 
 const deckStats = async (req, res) => {
 	try {
-		const decksData = await decksService.deckStats();
+		const { page, query } = req.query;
+
+		const decksData = await decksService.deckStats(page, query);
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);
