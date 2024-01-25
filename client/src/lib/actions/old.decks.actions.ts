@@ -1,7 +1,8 @@
 'use server';
 
+import { connectToDB } from '../middleware/connectToDB';
 import Deck from '../models/decklist.model';
-import { connectToDB } from '../utils';
+
 // Function to aggregate decks count by color identity
 export const decksByColorIdentity = () => {
 	connectToDB();
@@ -528,15 +529,11 @@ export const deckStatsHandler = async () => {
 
 	// Merge the results based on the common field (Title)
 	const mergedResults = deckStats.map((deckStats) => {
-		const matchingUniqueCards = uniqueCards.find((uniqueCards) =>
-			uniqueCards._id.includes(deckStats.deckName)
-		);
+		const matchingUniqueCards = uniqueCards.find((uniqueCards) => uniqueCards._id.includes(deckStats.deckName));
 
 		return {
 			...deckStats,
-			uniqueCardCount: matchingUniqueCards
-				? matchingUniqueCards.uniqueCardsCount
-				: 0,
+			uniqueCardCount: matchingUniqueCards ? matchingUniqueCards.uniqueCardsCount : 0,
 		};
 	});
 

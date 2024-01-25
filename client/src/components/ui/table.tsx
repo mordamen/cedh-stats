@@ -1,9 +1,9 @@
 import { FC } from 'react';
 import Image from 'next/image';
 import { colorIconMap } from '@/src/constants';
-import { DeckStatsData, mostPlayedCardsData } from '@/src/constants/definitions';
+import { DeckStatsData, TableProps, mostPlayedCardsData } from '@/src/constants/definitions';
 
-export const Table_MostPlayedDecks = ({ data }: { data: mostPlayedCardsData[] }) => {
+export const Table_MostPlayedDecks = ({ data, currentPage }: { data: mostPlayedCardsData[]; currentPage: number }) => {
 	return (
 		<table className='flex flex-col text-white'>
 			<thead className=''>
@@ -20,7 +20,7 @@ export const Table_MostPlayedDecks = ({ data }: { data: mostPlayedCardsData[] })
 			<tbody className=''>
 				{data.map((card, index) => (
 					<tr key={index} className='flex justify-evenly shadow-modal rounded-lg my-2 py-2'>
-						<td className='w-1/12 text-center'>{index + 1}</td>
+						<td className='w-1/12 text-center'>{(currentPage - 1) * 10 + index + 1}</td>
 						<td className='w-4/12 pl-4'>{card.cardName}</td>
 						<td className='w-1/12 flex flex-wrap'>
 							{card.colorIdentity.split('').map((color, index) => (
@@ -47,7 +47,7 @@ export const Table_MostPlayedDecks = ({ data }: { data: mostPlayedCardsData[] })
 
 // -----------------------------------------------------------------------
 
-export const Table_DeckStats = ({ data }: { data: DeckStatsData[] }) => {
+export const Table_DeckStats = ({ data, currentPage }: { data: DeckStatsData[]; currentPage: number }) => {
 	return (
 		<table className='flex flex-col text-white'>
 			<thead className=''>
@@ -55,20 +55,22 @@ export const Table_DeckStats = ({ data }: { data: DeckStatsData[] }) => {
 					<th className='w-1/12 '>#</th>
 					<th className='w-4/12 text-start '>Deck Name</th>
 					<th className='w-3/12 text-start'>Color Identity</th>
-					<th className='w-1/12'># of Lands </th>
+					<th className='w-1/12'>
+						# of <br /> Lands
+					</th>
 					<th className='w-1/12'># of Sorceries</th>
 					<th className='w-1/12'># of Instants</th>
 					<th className='w-1/12'># of Planeswalkers</th>
 					<th className='w-1/12'># of Creatures</th>
 					<th className='w-1/12'># of Battles</th>
 					<th className='w-1/12'>Avg Mana Value</th>
-					<th className='w-1/12'>Unique Card #</th>
+					<th className='w-1/12'>Unique Cards</th>
 				</tr>
 			</thead>
 			<tbody className=''>
 				{data.map((deck, index) => (
 					<tr key={index} className='flex justify-evenly shadow-modal rounded-lg my-2 py-2'>
-						<td className='w-1/12 text-center'>{index + 1}</td>
+						<td className='w-1/12 text-center'>{(currentPage - 1) * 10 + index + 1}</td>
 						<td className='w-4/12 pl-4'>{deck.deckName}</td>
 						<td className='w-3/12 flex flex-wrap'>
 							{deck.colorIdentity.split('').map((color, index) => (
@@ -99,50 +101,36 @@ export const Table_DeckStats = ({ data }: { data: DeckStatsData[] }) => {
 };
 
 // -----------------------------------------------------------------------
-// Declare generic types at the top level
-type T = any; // Substitute with the actual type of your data
-type U = keyof T;
-interface Props<T, U extends keyof T> {
-	data: T[];
-	headers: U[];
-}
 
-export const GenericTable: FC<Props<T, U>> = ({ data, headers }) => {
-	return (
-		<table className='flex flex-col text-white'>
-			<thead className=''>
-				<tr className='flex justify-evenly text-small-regular'>
-					{headers.map((header) => (
-						<th key={String(header)} className='w-1/12'>
-							{String(header)}
-						</th>
-					))}
-				</tr>
-			</thead>
-			<tbody className=''>
-				{data.map((item, index) => (
-					<tr key={index} className='flex justify-evenly shadow-modal rounded-lg my-2 py-2'>
-						{headers.map((header) => (
-							<td key={String(header)} className='w-1/12'>
-								{header === 'colorIdentity' && colorIconMap
-									? item[header]
-											.split('')
-											.map((color: string, index: number) => (
-												<Image
-													key={`mostplayed-${color}-${index}`}
-													className='mx-1'
-													src={colorIconMap[color]}
-													width={24}
-													height={24}
-													alt={`${color} Mana Icon`}
-												/>
-											))
-									: item[header]}
-							</td>
-						))}
-					</tr>
-				))}
-			</tbody>
-		</table>
-	);
-};
+// export const GenericTable = <T extends object>({ data, columns }: TableProps<T>) => {
+// 	return (
+// 		<table className='flex flex-col text-white'>
+// 			<thead className=''>
+// 				<tr className='flex justify-evenly text-small-regular'>
+// 					{columns.map((column) => (
+// 						<th key={String(column.key)} className='w-auto'>
+// 							{column.title}
+// 						</th>
+// 					))}
+// 				</tr>
+// 			</thead>
+// 			<tbody className=''>
+// 				{data.map((row, index) => (
+// 					<tr key={index} className='flex justify-evenly shadow-modal rounded-lg my-2 py-2'>
+// 						{columns.map((column) => (
+// 							<td key={String(column.key)} className='w-auto'>
+// 								{column.key === 'colorIdentity' && column.render
+// 									? column.render(row[column.key])
+// 									: column.key === 'rowNumber'
+// 									? column.render(index)
+// 									: column.render
+// 									? column.render(row[column.key])
+// 									: String(row[column.key])}
+// 							</td>
+// 						))}
+// 					</tr>
+// 				))}
+// 			</tbody>
+// 		</table>
+// 	);
+// };

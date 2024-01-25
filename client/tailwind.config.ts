@@ -1,12 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ['class'],
-	content: [
-		'./pages/**/*.{ts,tsx}',
-		'./components/**/*.{ts,tsx}',
-		'./app/**/*.{ts,tsx}',
-		'./src/**/*.{ts,tsx}',
-	],
+	content: ['./pages/**/*.{ts,tsx}', './components/**/*.{ts,tsx}', './app/**/*.{ts,tsx}', './src/**/*.{ts,tsx}'],
 	theme: {
 		container: {
 			center: true,
@@ -16,6 +11,55 @@ module.exports = {
 			},
 		},
 		fontSize: {
+			xs: [
+				'0.75rem' /* 12px */,
+				{
+					lineHeight: '1rem' /* 16px */,
+					// fontWeight: '700',
+				},
+			],
+			sm: [
+				'0.875rem' /* 14px */,
+				{
+					lineHeight: '1.25rem' /* 20px */,
+					// fontWeight: '700',
+				},
+			],
+			base: [
+				'1rem' /* 16px */,
+				{
+					lineHeight: '1.5rem' /* 24px */,
+					// fontWeight: '700',
+				},
+			],
+			lg: [
+				'1.125rem' /* 18px */,
+				{
+					lineHeight: '1.75rem' /* 28px */,
+					// fontWeight: '700',
+				},
+			],
+			xl: [
+				'1.25rem' /* 20px */,
+				{
+					lineHeight: '1.75rem' /* 28px */,
+					// fontWeight: '700',
+				},
+			],
+			'2xl': [
+				'1.5rem' /* 24px */,
+				{
+					lineHeight: '2rem' /* 32px */,
+					// fontWeight: '700',
+				},
+			],
+			'3xl': [
+				'1.875rem' /* 30px */,
+				{
+					lineHeight: '2.25rem' /* 36px */,
+					// fontWeight: '700',
+				},
+			],
 			'heading1-bold': [
 				'36px',
 				{

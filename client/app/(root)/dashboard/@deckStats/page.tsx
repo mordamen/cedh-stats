@@ -2,6 +2,7 @@ import Pagination from '@/src/components/shared/Pagination';
 import Search from '@/src/components/shared/Search';
 import { InvoicesTableSkeleton } from '@/src/components/ui/skeletons';
 import { Table_DeckStats } from '@/src/components/ui/table';
+import { DeckStatsHeaders } from '@/src/constants';
 import { DeckStatsData } from '@/src/constants/definitions';
 import { unstable_noStore as noStore } from 'next/cache';
 import { Suspense } from 'react';
@@ -44,12 +45,14 @@ const DeckStats = async ({
 			{/* <h1 className=''>Most Played Cards</h1> */}
 
 			<div className='my-4 flex items-center justify-between gap-2 md:mt-8'>
-				{/* <Search placeholder='Search cards...' /> */}
+				<Search placeholder='Search cards...' />
 			</div>
 			<Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-				<Table_DeckStats data={data} />
+				<Table_DeckStats data={data} currentPage={currentPage} />
 			</Suspense>
-			<div className='mt-5 flex w-full justify-center'>{/* <Pagination totalPages={totalPages} /> */}</div>
+			<div className='mt-5 flex w-full justify-center'>
+				<Pagination totalPages={totalPages} />
+			</div>
 		</>
 	);
 };

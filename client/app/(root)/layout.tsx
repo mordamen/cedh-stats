@@ -19,7 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 					<div className='flex h-screen flex-col md:flex-row md:overflow-hidden'>
 						<SideNav />
 
-						<section className='flex-grow p-6 md:overflow-y-auto md:p-12 bg-gradient-to-r bg-cedh-blue to-indigo-700'>
+						<section className='flex-grow  md:overflow-y-auto  bg-gradient-to-r bg-cedh-blue to-indigo-700'>
 							{children}
 						</section>
 					</div>

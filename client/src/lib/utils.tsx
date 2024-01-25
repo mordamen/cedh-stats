@@ -1,5 +1,7 @@
 import { type ClassValue, clsx } from 'clsx';
+import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
+import { colorIconMap } from '../constants';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -28,4 +30,19 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
 	// show the first page, an ellipsis, the current page and its neighbors,
 	// another ellipsis, and the last page.
 	return [1, '...', currentPage - 1, currentPage, currentPage + 1, '...', totalPages];
+};
+
+export const renderColorIdentity = (colorIdentity: string) => {
+	return colorIdentity
+		.split('')
+		.map((color, index) => (
+			<Image
+				key={`<span class="math-inline">\{color\}\-</span>{index}`}
+				className='mx-1'
+				src={colorIconMap[color]}
+				width={24}
+				height={24}
+				alt={`${color} Mana Icon`}
+			/>
+		));
 };

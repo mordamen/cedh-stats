@@ -1,3 +1,5 @@
+import { ReactNode } from 'react';
+
 export type mostPlayedCardsData = {
 	cardName: string;
 	colorIdentity: string;
@@ -5,6 +7,16 @@ export type mostPlayedCardsData = {
 	cardAmount: number;
 	cardPercent: number;
 	inXDecksofColor: number;
+};
+
+export type AverageDeckStatsData = {
+	averageArtifactCount: number;
+	averageLandCount: number;
+	averageSorceryCount: number;
+	averageInstantCount: number;
+	averagePlaneswalkerCount: number;
+	averageCreatureCount: number;
+	averageBattleCount: number;
 };
 
 // Define a type for mapping color characters to image source URLs
@@ -23,3 +35,18 @@ export type DeckStatsData = {
 	averageManaValue: number;
 	uniqueCardCount: number;
 };
+
+export interface Column<T> {
+	key: keyof T;
+	title: string;
+	// render?: (value: T[keyof T]) => ReactNode;
+}
+
+export interface TableProps<T extends object> {
+	data: T[];
+	columns: {
+		key: string;
+		title: string;
+		// render?: (value: T[keyof T]) => ReactNode;
+	}[];
+}
