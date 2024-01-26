@@ -63,8 +63,9 @@ const decksByColorIdentity = () => {
 		},
 		{
 			$project: {
-				colorWeight: 0,
-				// _id: 0,
+				_id: 0,
+				name: '$_id',
+				value: '$count',
 			},
 		},
 	]);
@@ -80,23 +81,23 @@ const decksByGlobalColorIdentity = async () => {
 		const summary = {};
 
 		dataArray.forEach((item) => {
-			const combination = item._id;
-			dataArray.forEach(({ _id, count }) => {
+			const combination = item.name;
+			dataArray.forEach(({ name, value }) => {
 				const combArr = combination.split('');
-				const checkedCombArr = _id.split('');
+				const checkedCombArr = name.split('');
 				const check = checkedCombArr.filter((key) => combArr.includes(key));
 				if (check.join('') === combArr.join('')) {
 					if (!summary[combination]) {
 						summary[combination] = 0;
 					}
-					summary[combination] += count;
+					summary[combination] += value;
 				}
 			});
 		});
 
 		const summaryArray = [];
 
-		Object.keys(summary).forEach((key) => summaryArray.push({ _id: key, count: summary[key] }));
+		Object.keys(summary).forEach((key) => summaryArray.push({ name: key, value: summary[key] }));
 
 		return summaryArray;
 	};

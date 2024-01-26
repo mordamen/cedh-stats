@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/src/components/ui/tabs';
-import Header from '@/src/components/shared/Header';
 
 export default function Layout({
 	children,

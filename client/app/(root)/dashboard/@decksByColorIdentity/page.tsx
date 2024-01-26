@@ -2,7 +2,7 @@
 
 import { unstable_noStore as noStore } from 'next/cache';
 import { useCallback, useEffect, useState } from 'react';
-import { PieChart, Pie, ResponsiveContainer, Sector } from 'recharts';
+import { PieChart, Pie, Sector } from 'recharts';
 
 interface ChartDataItem {
 	name: string;
@@ -26,7 +26,7 @@ const renderActiveShape = (props: any) => {
 	return (
 		<g>
 			<text x={cx} y={cy} dy={8} textAnchor='middle' fill='#ffffff' className='text-xs'>
-				[payload.name]
+				{payload.name}
 			</text>
 			<Sector
 				cx={cx}
@@ -74,18 +74,18 @@ const decksByColorIdentity = () => {
 			try {
 				const response = await fetch(`http://localhost:8181/api/decks/decksByColorIdentity`);
 				const data = await response.json();
-				console.log('🚀 ~ fetchData ~ data:', data);
+				console.log('🚀 ~ decksByColorIdentity ~ data:', data);
 
-				const transformedData = [];
-				for (const item of data) {
-					for (const [key, value] of Object.entries(item)) {
-						transformedData.push({ name: key, value: value as number });
-					}
-				}
+				// const transformedData = [];
+				// for (const item of data) {
+				// 	for (const [key, value] of Object.entries(item)) {
+				// 		transformedData.push({ name: key, value: value as number });
+				// 	}
+				// }
 
-				setChartData(transformedData as ChartDataItem[]);
+				setChartData(data as ChartDataItem[]);
 				// Do something with transformedData here, e.g., set a state variable
-				console.log(transformedData);
+				// console.log('🚀 ~ fetchData ~ transformedData:', transformedData);
 			} catch (error) {
 				console.error(error);
 				throw error; // Re-throw to handle in the component
@@ -97,22 +97,23 @@ const decksByColorIdentity = () => {
 	}, []); // Empty dependency array to run only once on component mount
 
 	return (
-		// <ResponsiveContainer width={400} height={250}>
-		<PieChart width={400} height={250}>
-			<Pie
-				activeIndex={activeIndex}
-				activeShape={renderActiveShape}
-				onMouseEnter={onPieEnter}
-				dataKey='value'
-				data={chartData}
-				cx={200}
-				cy={120}
-				innerRadius={60}
-				outerRadius={80}
-				fill='#8884d8'
-			/>
-		</PieChart>
-		// </ResponsiveContainer>
+		<div className='m-auto flex-col'>
+			<h1 className='text-center'>Decks By Color Identity</h1>
+			<PieChart width={400} height={250}>
+				<Pie
+					activeIndex={activeIndex}
+					activeShape={renderActiveShape}
+					onMouseEnter={onPieEnter}
+					dataKey='value'
+					data={chartData}
+					cx={200}
+					cy={120}
+					innerRadius={60}
+					outerRadius={80}
+					fill='#8884d8'
+				/>
+			</PieChart>
+		</div>
 	);
 };
 

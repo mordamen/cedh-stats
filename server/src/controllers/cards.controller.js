@@ -1,6 +1,7 @@
 const cardsService = require('../services/cards.service');
 const handleError = require('../middleware/errorHandler.middleware');
 const normalizeColorIdentity = require('../middleware/normalizeColorIdentity.middleware');
+const logger = require('../utilities/logger/morgan');
 
 // Server-side API route handler
 const mostPlayedCards = async (req, res) => {

@@ -2,7 +2,7 @@
 
 import { unstable_noStore as noStore } from 'next/cache';
 import { useCallback, useEffect, useState } from 'react';
-import { PieChart, Pie, ResponsiveContainer, Sector } from 'recharts';
+import { PieChart, Pie, Sector } from 'recharts';
 import { AverageDeckStatsLabel } from '@/src/constants/index';
 
 interface ChartDataItem {
@@ -70,7 +70,7 @@ const averagesPerDeck = () => {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			noStore(); // Assuming this is a custom function
+			noStore();
 
 			try {
 				const response = await fetch(`http://localhost:8181/api/decks/averagesPerDeck`);
@@ -82,7 +82,7 @@ const averagesPerDeck = () => {
 						transformedData.push({ name: key, value: value as number });
 					}
 				}
-
+				console.log('🚀 ~ averagesPerDeck ~ transformedData:', transformedData);
 				setChartData(transformedData as ChartDataItem[]);
 			} catch (error) {
 				console.error(error);
@@ -95,9 +95,8 @@ const averagesPerDeck = () => {
 	}, []); // Empty dependency array to run only once on component mount
 
 	return (
-		// <ResponsiveContainer>
-		<>
-			<h1 className='m-auto'>Averages Per Deck</h1>
+		<div className='m-auto flex-col'>
+			<h1 className='text-center'>Averages Per Deck</h1>
 			<PieChart width={400} height={250}>
 				<Pie
 					activeIndex={activeIndex}
@@ -112,8 +111,7 @@ const averagesPerDeck = () => {
 					fill='#8884d8'
 				/>
 			</PieChart>
-		</>
-		// </ResponsiveContainer>
+		</div>
 	);
 };
 

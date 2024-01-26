@@ -9,9 +9,6 @@ const mostPlayedCards = async (page, query) => {
 		},
 	]);
 
-	const colorcount = await decksByGlobalColorIdentity();
-	colorcount.unshift({ _id: 'C', count: totalDecks[0].count });
-
 	const offset = (page - 1) * ITEMS_PER_PAGE;
 
 	const pipeline = [
@@ -156,8 +153,11 @@ const mostPlayedCards = async (page, query) => {
 	// Run the aggregation pipeline
 	const results = await Deck.aggregate(pipeline);
 
+	const colorcount = await decksByGlobalColorIdentity();
+	colorcount.unshift({ name: 'C', value: totalDecks[0].count });
+
 	results.forEach((item) => {
-		const cardcolor = colorcount.find(({ _id }) => _id == item.colorIdentity);
+		const cardcolor = colorcount.find(({ name }) => name == item.colorIdentity);
 
 		if (cardcolor) item.inXDecksofColor = parseInt(((item.cardAmount / cardcolor.count) * 100).toFixed(2));
 	});

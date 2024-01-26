@@ -1,0 +1,52 @@
+Timestamp: Fri, 26 Jan 2024 13:29:51 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 220.468 ms Internal Server ErrorInternal Server Error
+Timestamp: Fri, 26 Jan 2024 13:31:28 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 152.022 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 13:32:42 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 145.128 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 13:33:27 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 153.562 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 13:39:00 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 362.755 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 13:40:43 GMT | Method: GET | URL: /api/cards/mostPlayedCards | Status: 400 | Response Time: 149.586 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Fri, 26 Jan 2024 17:43:03 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 902.283 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:44:41 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 335.433 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:45:11 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 345.425 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:45:55 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 482.835 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:49:22 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 349.426 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:49:57 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 351.549 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:50:38 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 355.684 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 17:53:07 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 357.189 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 18:04:10 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 9.325 ms 
+Error: Cannot access 'totalDecks' before initialization
+Error: Cannot access 'totalDecks' before initialization
+Timestamp: Fri, 26 Jan 2024 18:04:55 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query= | Status: 400 | Response Time: 348.611 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 18:12:04 GMT | Method: GET | URL: /api/decks/decksByGlobalColorIdentity | Status: 400 | Response Time: 91.211 ms 
+Error: Cannot read properties of undefined (reading 'split')
+Error: Cannot read properties of undefined (reading 'split')
+Timestamp: Fri, 26 Jan 2024 18:13:28 GMT | Method: GET | URL: /api/decks/decksByGlobalColorIdentity | Status: 400 | Response Time: 78.650 ms 
+Error: count is not defined
+Error: count is not defined
