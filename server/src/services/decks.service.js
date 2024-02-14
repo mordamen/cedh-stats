@@ -136,7 +136,6 @@ const deckStats = async (page, query) => {
 				decks: {
 					$addToSet: '$Title',
 				},
-				// Using $addToSet to collect unique deck names
 				count: {
 					$sum: 1,
 				},
@@ -720,8 +719,10 @@ const averagesPerDeck = () => {
 	return results;
 };
 
-const averagesByColorIdentity = () => {
-	const results = Deck.aggregate([
+const averagesByColorIdentity = async (page, query) => {
+	const offset = (page - 1) * ITEMS_PER_PAGE;
+
+	const results = await Deck.aggregate([
 		{
 			$project: {
 				card: {
@@ -1069,18 +1070,14 @@ const averagesByColorIdentity = () => {
 			},
 		},
 		{
-			$sort:
-				/**
-				 * Provide any number of field/order pairs.
-				 */
-				{
-					colorWeight: 1, // Sorting by colorWeight in ascending order
-				},
+			$sort: {
+				colorWeight: 1, // Sorting by colorWeight in ascending order
+			},
 		},
 		{
 			$project: {
-				_id: 1,
-				// Exclude the _id field from the final result
+				_id: 0,
+				colorIdentity: '$_id',
 				averageArtifactCount: {
 					$round: ['$averageArtifactCount', 2],
 				},
@@ -1105,9 +1102,33 @@ const averagesByColorIdentity = () => {
 				},
 			},
 		},
+		{
+			$match: {
+				$or: [
+					{ colorIdentity: { $regex: new RegExp(query, 'i') } },
+					{ averageArtifactCount: { $regex: new RegExp(query, 'i') } },
+					{ averageLandCount: { $regex: new RegExp(query, 'i') } },
+					{ averageSorceryCount: { $regex: new RegExp(query, 'i') } },
+					{ averageInstantCount: { $regex: new RegExp(query, 'i') } },
+					{ averagePlaneswalkerCount: { $regex: new RegExp(query, 'i') } },
+					{ averageCreatureCount: { $regex: new RegExp(query, 'i') } },
+					{ averageBattleCount: { $regex: new RegExp(query, 'i') } },
+					// { averageManaValue: { $regex: new RegExp(query, 'i') } },
+				],
+			},
+		},
+		{ $skip: offset }, // Skip initial results
+		{ $limit: ITEMS_PER_PAGE }, // Limit results per page
 	]);
 
-	return results;
+	const totalPages = Math.ceil(31 / ITEMS_PER_PAGE);
+
+	const response = {
+		data: results,
+		totalPages: totalPages,
+	};
+
+	return response;
 };
 
 module.exports = {

@@ -4,10 +4,7 @@ const decksController = require('../controllers/decks.controller');
 
 router.get('/decksByColorIdentity', decksController.decksByColorIdentity);
 
-router.get(
-	'/decksByGlobalColorIdentity',
-	decksController.decksByGlobalColorIdentity
-);
+router.get('/decksByGlobalColorIdentity', decksController.decksByGlobalColorIdentity);
 
 router.get('/deckStats', decksController.deckStats);
 

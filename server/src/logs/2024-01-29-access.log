@@ -1,0 +1,63 @@
+Timestamp: Mon, 29 Jan 2024 16:54:00 GMT | Method: GET | URL: /api/decks/AveragesByColorIdentityData?page=1&query= | Status: 404 | Response Time: 1.787 ms 
+Timestamp: Mon, 29 Jan 2024 16:54:10 GMT | Method: GET | URL: /api/decks/averagesByColorIdentityData?page=1&query= | Status: 404 | Response Time: 1.495 ms 
+Timestamp: Mon, 29 Jan 2024 17:08:07 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity | Status: 400 | Response Time: 140.630 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 29 Jan 2024 17:08:54 GMT | Method: GET | URL: /api/decks/deckStats | Status: 400 | Response Time: 587.245 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 29 Jan 2024 17:24:10 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 404 | Response Time: 4.209 ms 
+Timestamp: Mon, 29 Jan 2024 17:54:16 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 105.936 ms 
+Error: unknown top level operator: $cards.v.card.type_line. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Error: unknown top level operator: $cards.v.card.type_line. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Timestamp: Mon, 29 Jan 2024 18:03:21 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 188.922 ms 
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a numeric type (is BSON type null)
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a numeric type (is BSON type null)
+Timestamp: Mon, 29 Jan 2024 18:06:40 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 114.559 ms 
+Error: unknown top level operator: $cards.v.card.type_line. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Error: unknown top level operator: $cards.v.card.type_line. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Timestamp: Mon, 29 Jan 2024 18:07:08 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 782.723 ms 
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Timestamp: Mon, 29 Jan 2024 18:11:41 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 108.564 ms 
+Error: unknown top level operator: $cards.v.card.type_line. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Error: unknown top level operator: $cards.v.card.type_line. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+Timestamp: Mon, 29 Jan 2024 18:11:54 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 117.357 ms 
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Timestamp: Mon, 29 Jan 2024 18:16:11 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 119.716 ms 
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Timestamp: Mon, 29 Jan 2024 18:16:14 GMT | Method: GET | URL: /api/cards/uniqueCard | Status: 400 | Response Time: 98.686 ms 
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Error: PlanExecutor error during aggregation :: caused by :: $substrCP: length must be a nonnegative integer.
+Timestamp: Mon, 29 Jan 2024 19:04:21 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity | Status: 400 | Response Time: 123.936 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 29 Jan 2024 19:04:27 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity | Status: 400 | Response Time: 110.803 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 29 Jan 2024 21:39:09 GMT | Method: GET | URL: /api/decks/deckStats | Status: 400 | Response Time: 630.873 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 29 Jan 2024 21:39:24 GMT | Method: GET | URL: /api/cards/mostPlayedCards?colorIdentity=&cardType= | Status: 400 | Response Time: 227.374 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 29 Jan 2024 21:40:42 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=&query= | Status: 400 | Response Time: 217.409 ms 
+Error: invalid argument to $skip stage: Expected a non-negative number in: $skip: -10
+Error: invalid argument to $skip stage: Expected a non-negative number in: $skip: -10
+Timestamp: Mon, 29 Jan 2024 21:51:25 GMT | Method: GET | URL: /api/cards/mostPlayedCards?query=&page=1 | Status: 400 | Response Time: 443.067 ms 
+Error: cardAmount is not defined
+Error: cardAmount is not defined
+Timestamp: Mon, 29 Jan 2024 21:52:09 GMT | Method: GET | URL: /api/cards/mostPlayedCards?query=&page=1 | Status: 400 | Response Time: 432.686 ms 
+Error: inNumberOfDecks is not defined
+Error: inNumberOfDecks is not defined
+Timestamp: Mon, 29 Jan 2024 21:54:29 GMT | Method: GET | URL: /api/cards/mostPlayedCards?query=&page=1 | Status: 400 | Response Time: 468.836 ms 
+Error: cardAmount is not defined
+Error: cardAmount is not defined
+Timestamp: Mon, 29 Jan 2024 21:54:46 GMT | Method: GET | URL: /api/cards/mostPlayedCards?query=&page=1 | Status: 400 | Response Time: 458.484 ms 
+Error: colorIdentity is not defined
+Error: colorIdentity is not defined
+Timestamp: Mon, 29 Jan 2024 21:56:58 GMT | Method: GET | URL: /api/cards/mostPlayedCards?query=&page=1 | Status: 400 | Response Time: 10010.100 ms 
+Error: Operation `decks.aggregate()` buffering timed out after 10000ms
+Error: Operation `decks.aggregate()` buffering timed out after 10000ms

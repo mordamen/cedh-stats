@@ -42,7 +42,9 @@ const averagesPerDeck = async (req, res) => {
 
 const averagesByColorIdentity = async (req, res) => {
 	try {
-		const decksData = await decksService.averagesByColorIdentity();
+		const { page, query } = req.query;
+
+		const decksData = await decksService.averagesByColorIdentity(page, query);
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);

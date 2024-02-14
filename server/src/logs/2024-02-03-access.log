@@ -1,0 +1,36 @@
+Timestamp: Sat, 03 Feb 2024 17:00:38 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity?page=1&query= | Status: 400 | Response Time: 57863.022 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:00:38 GMT | Method: GET | URL: /api/decks/deckStats?page=1&query= | Status: 400 | Response Time: 58090.228 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:00:46 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query=&colorID= | Status: 400 | Response Time: 66086.707 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query=&colorID= | Status: 400 | Response Time: 37182.673 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity?page=1&query= | Status: 400 | Response Time: 32427.358 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/decks/deckStats?page=1&query= | Status: 400 | Response Time: 32427.934 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query=&colorID= | Status: 400 | Response Time: 32428.808 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity?page=1&query= | Status: 400 | Response Time: 48903.650 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/decks/deckStats?page=1&query= | Status: 400 | Response Time: 48904.732 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:05 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=1&query=&colorID= | Status: 400 | Response Time: 48905.623 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:09 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity?page=1&query= | Status: 400 | Response Time: 41450.558 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Timestamp: Sat, 03 Feb 2024 17:13:09 GMT | Method: GET | URL: /api/decks/deckStats?page=1&query= | Status: 400 | Response Time: 41448.631 ms 
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net
+Error: getaddrinfo ENOTFOUND ac-tajbr0l-shard-00-01.7pypr3l.mongodb.net

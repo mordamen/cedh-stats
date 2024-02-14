@@ -1,32 +1,23 @@
 const cardsService = require('../services/cards.service');
 const handleError = require('../middleware/errorHandler.middleware');
-const normalizeColorIdentity = require('../middleware/normalizeColorIdentity.middleware');
-const logger = require('../utilities/logger/morgan');
 
-// Server-side API route handler
+/**
+ * Handles the server-side API route for retrieving the most played cards
+ * @param {Object} req - The request object
+ * @param {Object} res - The response object
+ */
 const mostPlayedCards = async (req, res) => {
 	try {
-		const { page, query } = req.query;
+		// Extract query parameters from the request
+		const { page, query, cardType, colorID } = req.query;
 
-		const decksData = await cardsService.mostPlayedCards(page, query);
+		// Retrieve data for the most played cards using the query parameters
+		const data = await cardsService.mostPlayedCards(page, query, cardType, colorID);
 
-		res.json(decksData);
+		// Send the retrieved data as JSON response
+		res.json(data);
 	} catch (error) {
-		handleError(res, error.message, 400);
-	}
-};
-
-const mostPlayedCards2 = async (req, res) => {
-	try {
-		// Extract data from query parameters
-		let { cardType, colorIdentity } = req.query;
-
-		const normalizedColorIdentity = normalizeColorIdentity(colorIdentity);
-		console.log('normalized colors: ', normalizedColorIdentity); // Always outputs an array of characters
-
-		const decksData = await cardsService.mostPlayedCards(cardType, normalizedColorIdentity);
-		res.json(decksData);
-	} catch (error) {
+		// Handle and send error message with status code 400
 		handleError(res, error.message, 400);
 	}
 };
