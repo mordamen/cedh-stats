@@ -5,7 +5,7 @@ import ColorSelection from './colorSelection.filter';
 
 const Filters = () => {
 	return (
-		<div>
+		<div className='flex flex-row'>
 			<ColorSelection />
 			<CardType />
 		</div>

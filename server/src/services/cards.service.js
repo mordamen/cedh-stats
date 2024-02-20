@@ -93,17 +93,17 @@ const mostPlayedCards = async (page, query, cardType, colorID) => {
 	const colorcount = await decksByGlobalColorIdentity();
 	colorcount.unshift({ name: 'C', value: totalDecks[0].count });
 
-	console.log('🚀 ~ mostPlayedCards ~ colorcount:', colorcount);
+	// console.log('🚀 ~ mostPlayedCards ~ colorcount:', colorcount);
 
 	results.forEach((item) => {
 		const cardcolor = colorcount.find(({ name }) => {
 			return name == item.colorIdentity;
 		});
 
-		console.log('🚀 ~ results.forEach ~ cardcolor:', cardcolor);
+		// console.log('🚀 ~ results.forEach ~ cardcolor:', cardcolor);
 
 		if (cardcolor) item.inXDecksofColor = parseInt(((item.cardAmount / cardcolor.value) * 100).toFixed(2));
-		console.log('🚀 ~ results.forEach ~ item.cardAmount:', item.cardAmount);
+		// console.log('🚀 ~ results.forEach ~ item.cardAmount:', item.cardAmount);
 	});
 
 	// Calculate totalPages

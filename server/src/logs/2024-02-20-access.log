@@ -1,0 +1,9 @@
+Timestamp: Tue, 20 Feb 2024 08:41:43 GMT | Method: GET | URL: /api/decks/deckStats?page=&colorID=&query= | Status: 400 | Response Time: 436.943 ms 
+Error: invalid argument to $skip stage: Expected a non-negative number in: $skip: -10
+Error: invalid argument to $skip stage: Expected a non-negative number in: $skip: -10
+Timestamp: Tue, 20 Feb 2024 09:18:10 GMT | Method: GET | URL: /api/decks/deckStats?page=1&colorID=W&query=&cardType | Status: 400 | Response Time: 6.200 ms 
+Error: cardType is not defined
+Error: cardType is not defined
+Timestamp: Tue, 20 Feb 2024 09:48:27 GMT | Method: GET | URL: /api/decks/deckStats?page=1&colorID=W&query=&cardType | Status: 400 | Response Time: 468.368 ms 
+Error: $in needs an array
+Error: $in needs an array

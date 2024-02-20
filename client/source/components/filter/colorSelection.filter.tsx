@@ -8,17 +8,22 @@ import { CgAdd } from 'react-icons/cg';
 import { RxReset } from 'react-icons/rx';
 import { siteConfig } from '@/source/config/site';
 
-// Define the ColorSelection functional component
+/**
+ * ColorSelection functional component for managing color selection
+ */
 const ColorSelection = () => {
+	// Get the current pathname, search params, and router
 	const pathname = usePathname();
 	const searchParams = useSearchParams();
 	const { replace } = useRouter();
 
+	// State to manage the selected colors
+	const [selectedColors, setSelectedColors] = useState<string[]>([]);
+
+	// Debounced callback to update URL params
 	const setNewParams = useDebouncedCallback((colors) => {
 		const params = new URLSearchParams(searchParams);
-		// params.set('page', '1');
 
-		console.log('🚀 ~ ColorSelection ~ pathname:', pathname);
 		if (colors) {
 			params.set('colorID', colors.join('').toString());
 		} else {
@@ -28,55 +33,48 @@ const ColorSelection = () => {
 		replace(`${pathname}?${params.toString()}`);
 	}, 300);
 
-	// State to manage the selected colors
-	const [selectedColors, setSelectedColors] = useState<string[]>([]);
-
-	// Function to handle clicks on color icons, toggling their selection
+	/**
+	 * Handle click on color icons, toggle selection, and update state
+	 * @param colorLabel - Label of the color icon clicked
+	 */
 	const handleClick = (colorLabel: string) => {
-		// Create a copy of the selectedColors array to avoid direct mutation
 		const newSelectedColors = [...selectedColors];
 
-		// Check if the color is already selected
 		if (newSelectedColors.includes(colorLabel)) {
-			// Deselect the color
 			const index = newSelectedColors.indexOf(colorLabel);
 			newSelectedColors.splice(index, 1);
 		} else {
-			// Select the color
 			newSelectedColors.push(colorLabel);
 		}
 
-		// Log the updated selected colors for debugging
 		console.log(' ~ handleClick ~ newSelectedColors:', newSelectedColors);
 
-		// Update the state with the new selected colors
 		setSelectedColors(newSelectedColors);
 		setNewParams(newSelectedColors);
 	};
 
+	/**
+	 * Reset selected colors to empty array
+	 */
 	const handleReset = () => {
 		const resetSelectedColors: string[] = [];
-		// Update the state with an empty array
 		setSelectedColors(resetSelectedColors);
 		setNewParams(resetSelectedColors);
 	};
 
-	// Return the JSX structure of the component
 	return (
-		<Popover>
+		<Popover placement='bottom' showArrow={true}>
 			<PopoverTrigger>
-				<Button className='border-dashed rounded-full text-xs m-1 p-2' size='sm'>
-					{/* Conditionally render content based on selected colors */}
+				<Button className='bg-transparent border-dashed border-2 rounded-full text-xs m-1 p-2 gap-0' size='sm'>
 					{selectedColors.length > 0 ? (
 						<>
-							{/* Render selected color icons within the button */}
 							{selectedColors.map((colorLabel: string) => {
 								const matchingIcon = siteConfig.colorIcons.find((icon) => icon.label === colorLabel);
 								return (
 									<>
 										<Image
 											key={colorLabel}
-											className='m-1 rounded-full'
+											className='m-1 rounded-full '
 											src={matchingIcon?.imgURL ?? ''}
 											width={20}
 											height={20}
@@ -85,14 +83,12 @@ const ColorSelection = () => {
 									</>
 								);
 							})}
-							{/* Button to reset selectedColors */}
-							<Button onClick={handleReset}>
+							<Button onClick={handleReset} className='bg-transparent min-w-1 p-0'>
 								<RxReset />
 							</Button>
 						</>
 					) : (
 						<>
-							{/* Display if no colors are selected */}
 							<CgAdd />
 							<span className='ml-1'>Color Identity</span>
 						</>
@@ -100,19 +96,17 @@ const ColorSelection = () => {
 				</Button>
 			</PopoverTrigger>
 
-			<PopoverContent className='flex flex-row flex-wrap justify-around bg-blue z-50 p-1 rounded-lg border-2  '>
-				{/* Map over the colorIcons array to create buttons for each color */}
+			<PopoverContent className='flex flex-row flex-wrap bg-blue z-50 p-1 rounded-lg border-2 max-w-40'>
 				{siteConfig.colorIcons.map((color) => (
 					<Button
 						key={`${color.label}`}
 						onClick={() => handleClick(color.label)}
-						// href={`${setNewParams(selectedColors)}`}
-						className='m-1'
+						className='bg-transparent p-1 min-w-9'
 					>
 						<Image
 							className={`${
 								selectedColors.includes(color.label) ? 'border-red-600 ' : 'border-transparent'
-							} border-2 rounded-full transition-all duration-200 aspect-square`}
+							} border-2 rounded-full transition-all duration-200 aspect-square `}
 							src={color.imgURL}
 							width={36}
 							height={36}

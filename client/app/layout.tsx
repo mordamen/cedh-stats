@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import { siteConfig } from '@/source/config/site';
 import { fontSans } from '@/source/config/fonts';
 import { Providers } from './providers';
-import { Navbar } from '@/components/navbar';
+import { Navbar } from '@/source/components/ui/navbar';
 import Footer from '@/source/components/ui/footer';
 import clsx from 'clsx';
 
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			<body className={clsx('bg-background font-sans antialiased ', fontSans.variable)}>
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark' }}>
 					<Navbar />
-					<main className=''>{children}</main>
+					<main className='container m-auto'>{children}</main>
 					<Footer />
 				</Providers>
 			</body>

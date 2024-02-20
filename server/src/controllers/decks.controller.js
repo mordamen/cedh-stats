@@ -22,9 +22,9 @@ const decksByGlobalColorIdentity = async (req, res) => {
 
 const deckStats = async (req, res) => {
 	try {
-		const { page, query } = req.query;
+		const { page, query, colorID } = req.query;
 
-		const decksData = await decksService.deckStats(page, query);
+		const decksData = await decksService.deckStats(page, query, colorID);
 		res.json(decksData);
 	} catch (error) {
 		handleError(res, error.message, 400);

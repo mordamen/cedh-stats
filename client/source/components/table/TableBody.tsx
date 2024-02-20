@@ -35,7 +35,7 @@ const TableBody = ({
 						{columns.map(({ accessor }: { accessor: string }, colIndex: number) => {
 							switch (accessor) {
 								case 'rowNumber':
-									// console.log('Displaying row number:', rowNumber);
+									console.log('Displaying row number:', rowNumber);
 									return <td key={accessor || colIndex}>{rowNumber}</td>;
 								case 'colorIdentity':
 									// console.log('Generating color icons for colorIdentity:', data[accessor]);

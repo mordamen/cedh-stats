@@ -1,0 +1,15 @@
+Timestamp: Sat, 17 Feb 2024 20:02:53 GMT | Method: GET | URL: /api/decks/deckStats?colorID=W&page=1&query=&cardType= | Status: 400 | Response Time: 2254.813 ms 
+Error: The field 'deckName' must be an accumulator object
+Error: The field 'deckName' must be an accumulator object
+Timestamp: Sat, 17 Feb 2024 20:02:54 GMT | Method: GET | URL: /api/decks/deckStats?colorID=W&page=1&query=&cardType= | Status: 400 | Response Time: 2568.988 ms 
+Error: The field 'deckName' must be an accumulator object
+Error: The field 'deckName' must be an accumulator object
+Timestamp: Sat, 17 Feb 2024 20:03:06 GMT | Method: GET | URL: /api/decks/deckStats | Status: 400 | Response Time: 1473.326 ms 
+Error: The field 'deckName' must be an accumulator object
+Error: The field 'deckName' must be an accumulator object
+Timestamp: Sat, 17 Feb 2024 20:05:47 GMT | Method: GET | URL: /api/decks/deckStats | Status: 400 | Response Time: 6234.209 ms 
+Error: The $round accumulator is a unary operator
+Error: The $round accumulator is a unary operator
+Timestamp: Sat, 17 Feb 2024 20:08:06 GMT | Method: GET | URL: /api/decks/deckStats | Status: 400 | Response Time: 3971.027 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0

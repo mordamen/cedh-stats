@@ -11,6 +11,6 @@
 		}
 	],
 	"settings": {
-		"conventionalCommits.scopes": ["client", "server"]
+		"conventionalCommits.scopes": ["client", "server", "both"]
 	}
 }
