@@ -7,3 +7,12 @@ Error: cardType is not defined
 Timestamp: Tue, 20 Feb 2024 09:48:27 GMT | Method: GET | URL: /api/decks/deckStats?page=1&colorID=W&query=&cardType | Status: 400 | Response Time: 468.368 ms 
 Error: $in needs an array
 Error: $in needs an array
+Timestamp: Tue, 20 Feb 2024 11:30:00 GMT | Method: GET | URL: /api/decks/deckStats?colorID=&page=1&query=&cardType= | Status: 400 | Response Time: 661.850 ms 
+Error: deckStats.forEach is not a function
+Error: deckStats.forEach is not a function
+Timestamp: Tue, 20 Feb 2024 11:30:07 GMT | Method: GET | URL: /api/decks/deckStats?colorID=&page=1&query=&cardType= | Status: 400 | Response Time: 311.474 ms 
+Error: deckStats.forEach is not a function
+Error: deckStats.forEach is not a function
+Timestamp: Tue, 20 Feb 2024 11:30:16 GMT | Method: GET | URL: /api/decks/deckStats?page=1&colorID=W&query=&cardType | Status: 400 | Response Time: 280.898 ms 
+Error: deckStats.forEach is not a function
+Error: deckStats.forEach is not a function

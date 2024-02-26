@@ -1,7 +1,0 @@
-{
-	"dbConfig": {
-		"url": "mongodb+srv://admin:Aa123456!@testcluster.7pypr3l.mongodb.net/cedh-stats"
-	},
-	"jwt": "780y94563hj2y45wopiunj",
-	"file": "Production"
-}

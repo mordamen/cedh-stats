@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# TODO remove this when this project is finished
+temp.md
+
 # next.js
 /.next/
 /out/

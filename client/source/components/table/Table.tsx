@@ -1,10 +1,22 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import TableBody from './TableBody';
+import { useEffect, useMemo, useState } from 'react';
+import {
+	Table,
+	TableHeader,
+	TableColumn,
+	TableBody,
+	TableRow,
+	TableCell,
+	Pagination,
+	Spinner,
+	getKeyValue,
+} from '@nextui-org/react';
+
+import TableBodyComponent from './TableBody';
 import TableHead from './TableHead';
 
-const Table = ({ data, columns, currentPage }: { data: any; columns: any; currentPage: number }) => {
+export const TableOG = ({ data, columns, currentPage }: { data: any; columns: any; currentPage: number }) => {
 	const [tableData, setTableData] = useState(data);
 
 	useEffect(() => {
@@ -48,10 +60,112 @@ const Table = ({ data, columns, currentPage }: { data: any; columns: any; curren
 		<>
 			<table className='table w-full'>
 				<TableHead {...{ columns, handleSorting }} />
-				<TableBody {...{ columns, tableData, currentPage }} />
+				<TableBodyComponent {...{ columns, tableData, currentPage }} />
 			</table>
 		</>
 	);
 };
 
-export default Table;
+const rows = [
+	{
+		key: '1',
+		name: 'Tony Reichert',
+		role: 'CEO',
+		status: 'Active',
+	},
+	{
+		key: '2',
+		name: 'Zoey Lang',
+		role: 'Technical Lead',
+		status: 'Paused',
+	},
+	{
+		key: '3',
+		name: 'Jane Fisher',
+		role: 'Senior Developer',
+		status: 'Active',
+	},
+	{
+		key: '4',
+		name: 'William Howard',
+		role: 'Community Manager',
+		status: 'Vacation',
+	},
+];
+
+const columns = [
+	{
+		key: 'name',
+		label: 'NAME',
+	},
+	{
+		key: 'role',
+		label: 'ROLE',
+	},
+	{
+		key: 'status',
+		label: 'STATUS',
+	},
+];
+
+export const TableComponent2 = ({ columns, rows }: { columns: any; rows: any }) => {
+	return (
+		<Table aria-label='Example table with dynamic content'>
+			<TableHeader columns={columns}>
+				{(column: any) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+			</TableHeader>
+			<TableBody items={rows}>
+				{(item: any) => (
+					<TableRow key={item.key}>
+						{(columnKey: any) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
+					</TableRow>
+				)}
+			</TableBody>
+		</Table>
+	);
+};
+
+export const TableComponent = ({ columns, data }: { columns: any; data: any }) => {
+	const [page, setPage] = useState(1);
+	const rowsPerPage = 10;
+
+	const pages = Math.ceil(data.length / rowsPerPage);
+
+	const items = useMemo(() => {
+		const start = (page - 1) * rowsPerPage;
+		const end = start + rowsPerPage;
+
+		return data.slice(start, end);
+	}, [page, data]);
+
+	return (
+		<Table
+			aria-label='Example table with client side pagination'
+			bottomContent={
+				<div className='flex w-full justify-center'>
+					<Pagination
+						isCompact
+						showControls
+						showShadow
+						color='secondary'
+						page={page}
+						total={pages}
+						onChange={(page) => setPage(page)}
+					/>
+				</div>
+			}
+			classNames={{
+				wrapper: 'min-h-[222px]',
+			}}
+		>
+			<TableHeader columns={columns}>
+				{(column: any) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+			</TableHeader>
+			<TableBody items={data}>
+				{(item: any) => (
+					<TableRow key={item.name}>{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}</TableRow>
+				)}
+			</TableBody>
+		</Table>
+	);
+};

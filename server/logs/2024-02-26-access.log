@@ -1,0 +1,9 @@
+Timestamp: Mon, 26 Feb 2024 18:29:42 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity | Status: 400 | Response Time: 151.117 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 26 Feb 2024 18:37:45 GMT | Method: GET | URL: /api/decks/averagesByColorIdentity | Status: 400 | Response Time: 141.315 ms 
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Error: invalid argument to $skip stage: Expected an integer, but found NaN in: $skip: nan.0
+Timestamp: Mon, 26 Feb 2024 18:38:41 GMT | Method: GET | URL: /api/cards/mostPlayedCards?page=8&query=&colorID=G | Status: 400 | Response Time: 1.457 ms 
+Error: cardsService.mostPlayedCards is not a function
+Error: cardsService.mostPlayedCards is not a function

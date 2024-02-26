@@ -1,8 +1,8 @@
-import Table from '@/components/table/Table';
 import { siteConfig } from '@/source/config/site';
 import Pagination from '@/components/ui/pagination';
 import { DeckStatsData } from '@/source/types';
 import { getData } from '@/library/actions/generic.actions';
+import { TableOG, TableComponent, TableComponent2 } from '@/components/table/Table';
 
 const DeckStats = async ({
 	searchParams,
@@ -22,10 +22,12 @@ const DeckStats = async ({
 	const cardType = searchParams?.cardType || '';
 
 	const { data, totalPages } = await getData({ query, currentPage, colorIdentity, cardType });
+	console.log('🚀 ~ data:', data);
 
 	return (
 		<>
-			<Table data={data} currentPage={totalPages} columns={siteConfig.DeckStatsHeaders} />
+			{/* <TableOG data={data} currentPage={totalPages} columns={siteConfig.DeckStatsHeaders} /> */}
+			<TableComponent2 rows={data} columns={siteConfig.DeckStatsHeaders} />
 			<div className='mt-5 flex w-full justify-center'>
 				<Pagination totalPages={totalPages} />
 			</div>

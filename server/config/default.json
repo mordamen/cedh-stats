@@ -1,7 +1,0 @@
-{
-	"validatorOption": "Joi",
-	"hashOption": "bcryptjs",
-	"dbOption": "mongoDB",
-	"tokenOption": "jwt",
-	"loggerOption": "morgan"
-}

@@ -3,9 +3,10 @@
 import { revalidateTag } from 'next/cache';
 import { unstable_noStore as noStore } from 'next/cache';
 
-export default async function action() {
+export async function action() {
 	revalidateTag('data');
 }
+
 /**
  * Fetches data from the server based on the given parameters.
  * @param query - The search query.
@@ -19,11 +20,13 @@ export async function getData({
 	currentPage,
 	colorIdentity,
 	cardType,
+	page,
 }: {
 	query?: string;
 	currentPage?: number;
 	colorIdentity?: string;
 	cardType?: string;
+	page?: string;
 }): Promise<{ data: any[]; totalPages: number }> {
 	noStore();
 

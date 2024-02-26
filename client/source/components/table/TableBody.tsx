@@ -9,7 +9,7 @@ import { siteConfig } from '@/source/config/site';
  * @param currentPage - The current page number
  * @returns The table body component
  */
-const TableBody = ({
+const TableBodyComponent = ({
 	tableData,
 	columns,
 	currentPage,
@@ -80,4 +80,4 @@ const TableBody = ({
 	);
 };
 
-export default TableBody;
+export default TableBodyComponent;
